@@ -1,11 +1,27 @@
-# Build and Release Folders
-bin/
-bin-debug/
-bin-release/
+#!/bin/bash
+echo "Enter filename"
+read filename
+echo "file $filename"
+echo  "Enter client host_addr: "
+read client_host_addr
+echo "client $client_host_addr"
+echo "Enter server_host_addr:"
+read server_host_addr
+echo "sever $server_host_addr"
+echo "Enter client_port: "
+read client_port
+echo "port $client_port"
+echo "Enter limit"
+read limit
+echo "Enter duration"
+read duration
+sipp -sn uac -t l1 -sf $filename -tls_cert sipp-external-lib-src/openssl-0.9.8c/apps/demoCA/cacert.pem -tls_key sipp-external-lib-src/openssl-0.9.8c/apps/demoCA/private/cakey.pem  -i $client_host_addr $server_host_addr:$client_port -m $limit -d $duration
 
-# Other files and folders
-.settings/
+if test $? -eq 0
+then
+     echo " calls are successfull"
+else
+     echo "calls are failure"
+fi
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+
