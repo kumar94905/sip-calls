@@ -1,4 +1,3 @@
 sip-calls
-=========
-
-using this script we can establish signal from source to destination
+=
+with these scripts we can run the test in automation mode
